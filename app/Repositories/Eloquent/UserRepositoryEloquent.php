@@ -24,4 +24,24 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     {
         $this->user = $user;
     }
+
+    /**
+     * @param string $email
+     * @return User|null
+     */
+    public function findUserByEmail(string $email): ?User
+    {
+        return $this->user->where('email', '=', $email)->first();
+    }
+
+    /**
+     * @param User $user
+     * @return User
+     */
+    public function create(User $user): User
+    {
+        $user->password = bcrypt($user->password);
+        $user->save();
+        return $user;
+    }
 }

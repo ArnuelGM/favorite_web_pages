@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +27,19 @@ Route::group(['prefix' => 'register'], function () {
     Route::get('/', [
         'as' => 'register.form',
         'uses' => FormCreateUserController::class
+    ]);
+
+    /* creación de registro */
+    Route::post('/create', [
+        'as' => 'create.register',
+        'uses' => CreateUserController::class
+    ]);
+});
+
+Route::group(['prefix' => 'login'], function () {
+    /* Formulario de ingreso */
+    Route::get('/', [
+        'as' => 'login',
+        'uses' =>
     ]);
 });

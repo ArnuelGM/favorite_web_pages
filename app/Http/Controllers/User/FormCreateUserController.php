@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-
 use Illuminate\Contracts\View\View;
 
 /**
