@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\User;
 
+
 use Illuminate\Contracts\View\View;
 
-/**
- * Class FormLoginController
+/**.
+ * Class HomeController
  * @package App\Http\Controllers\User
  */
-class FormLoginController
+class HomeController
 {
     /**
      * @return View
      */
     public function __invoke(): View
     {
-        return view('pages.userLogin.login_form');
+        return view('pages.internals.home');
     }
 }

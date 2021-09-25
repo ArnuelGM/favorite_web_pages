@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
+use App\Http\Controllers\User\FormLoginController;
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\LoginUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
  * Rutas para la gestión de usuario
@@ -39,7 +38,24 @@ Route::group(['prefix' => 'register'], function () {
 Route::group(['prefix' => 'login'], function () {
     /* Formulario de ingreso */
     Route::get('/', [
+        'as' => 'login.form',
+        'uses' => FormLoginController::class
+    ]);
+
+    /* petición de login */
+    Route::post('', [
         'as' => 'login',
-        'uses' =>
+        'uses' => LoginUserController::class
+    ]);
+});
+
+/**
+ * sistema interno
+ */
+Route::group(['middleware' => 'auth.basic'], function () {
+    /* pagina de inicio de usuarios autenticados */
+    Route::get('home/', [
+        'as' => 'user.home',
+        'uses' => HomeController::class
     ]);
 });

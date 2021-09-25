@@ -4,11 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Exceptions\CreateUserException;
 use App\Http\Requests\CreateUserFormRequest;
-use App\Models\User;
 use App\UseCases\Contracts\CreateUserUseCaseInterface;
-use Egulias\EmailValidator\Exception\ExpectingQPair;
 use Exception;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class CreateUserController
@@ -32,8 +30,9 @@ class CreateUserController
 
     /**
      * @param CreateUserFormRequest $request
+     * @return RedirectResponse
      */
-    public function __invoke(CreateUserFormRequest $request)
+    public function __invoke(CreateUserFormRequest $request): RedirectResponse
     {
         $error = null;
         try {
@@ -43,11 +42,12 @@ class CreateUserController
                 $request->get('password')
             );
 
-            dd($user);
+            session()->flash('success', 'Usuario creado con éxito');
+            return redirect()->route('login.form')->withInput(['email' => $user->email]);
         } catch (CreateUserException $exception) {
-            $error = ($exception->getMessage());
+            $error = $exception->getMessage();
         } catch (Exception $exception) {
-            $error = ('Error no controlado');
+            $error = 'Error no controlado';
         }
 
         return redirect()->back()->withErrors([

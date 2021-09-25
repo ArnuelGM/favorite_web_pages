@@ -6,7 +6,6 @@
             <form method="POST" action="{{ route('create.register') }}">
                 @csrf
                     <h3>Regístrese Aquí</h3>
-
                 <hr>
                 <div class="mb-3 form-control-sm">
                     <label for="name" class="form-label">Nombre y Apellido</label>
@@ -28,6 +27,7 @@
                 <div style="text-align: center">
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </div>
+                <a href="{{ route('login.form') }}">Ingresar</a>
             </form>
             <div class="mt-3" style="max-width: 290px">
                 @includeWhen(isset($errors), 'components.alerts')
