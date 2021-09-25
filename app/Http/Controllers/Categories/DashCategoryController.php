@@ -31,7 +31,9 @@ class DashCategoryController
      */
     public function __invoke(): View
     {
-        return view('pages.internals.categories.dashboard_categories');
+        $categories = $this->categoryRepository->getUserCategories(auth()->user()->id);
+        $data = compact('categories');
+        return view('pages.internals.categories.dashboard_categories', $data);
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Category;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
+use Illuminate\Support\Collection;
 
 /**
  * Class CategoryRepositoryEloquent
@@ -42,5 +43,14 @@ class CategoryRepositoryEloquent implements CategoryRepositoryInterface
     public function findByName(string $name): ?Category
     {
         return $this->category->where('name', '=', $name)->first();
+    }
+
+    /**
+     * @param int $userID
+     * @return Collection
+     */
+    public function getUserCategories(int $userID): Collection
+    {
+        return $this->category->where('user_id', '=', $userID)->get();
     }
 }

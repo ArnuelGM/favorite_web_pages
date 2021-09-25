@@ -11,7 +11,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('user.home') }}">Inicio</a>
                     <a class="nav-link" href="#">Mis favoritos</a>
-                    <a class="nav-link" href="#">Categorías</a>
+                    <a class="nav-link" href="{{ route('category.dashboard') }}">Categorías</a>
                 </div>
             </div>
             <div class="collapse navbar-collapse flex-grow-1 text-right">
