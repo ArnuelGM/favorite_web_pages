@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Categories\CreateCategoryController;
+use App\Http\Controllers\Categories\DashCategoryController;
+use App\Http\Controllers\Categories\FormCreateCategoryController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
 use App\Http\Controllers\User\FormLoginController;
@@ -64,4 +67,29 @@ Route::group(['middleware' => 'auth.basic'], function () {
         'as' => 'user.home',
         'uses' => HomeController::class
     ]);
+
+    /**
+     * sistema interno
+     */
+    Route::group(['prefix' => 'categories'], function () {
+        /* Formulario de creación de categoría */
+        Route::get('/create', [
+            'as' => 'category.create.form',
+            'uses' => FormCreateCategoryController::class
+        ]);
+
+        /* Creación de categoría */
+        Route::post('/create', [
+            'as' => 'category.create',
+            'uses' => CreateCategoryController::class
+        ]);
+
+        /* Dashboard de categoría */
+        Route::get('/dashboard', [
+            'as' => 'category.dashboard',
+            'uses' => DashCategoryController::class
+        ]);
+    });
+
 });
+

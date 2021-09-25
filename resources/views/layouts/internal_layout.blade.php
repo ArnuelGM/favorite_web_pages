@@ -25,7 +25,7 @@
     </nav>
 
     <div class="container">
-        @yield('page_content')
+        @yield('content')
     </div>
 @endsection
 
