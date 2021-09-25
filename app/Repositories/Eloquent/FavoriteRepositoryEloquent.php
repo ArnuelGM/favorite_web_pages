@@ -44,4 +44,13 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
     {
         return $this->favorite->where('user_id', '=', $userID)->get();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function delete(int $favoriteID): bool
+    {
+        $register = $this->favorite->findOrFail($favoriteID);
+        return $register->delete();
+    }
 }

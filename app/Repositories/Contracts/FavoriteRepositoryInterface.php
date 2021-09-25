@@ -22,4 +22,10 @@ interface FavoriteRepositoryInterface
      * @return Collection
      */
     public function getUserFavorites(int $userID): Collection;
+
+    /**
+     * @param int $favoriteID
+     * @return bool
+     */
+    public function delete(int $favoriteID): bool;
 }

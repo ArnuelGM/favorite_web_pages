@@ -8,6 +8,7 @@ use App\Http\Controllers\Categories\FormCreateCategoryController;
 use App\Http\Controllers\Categories\FormEditCategoryController;
 use App\Http\Controllers\Favorites\CreateFavoriteController;
 use App\Http\Controllers\Favorites\DashFavoriteController;
+use App\Http\Controllers\Favorites\DeleteFavoriteController;
 use App\Http\Controllers\Favorites\FormCreateFavoriteController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
@@ -136,12 +137,12 @@ Route::group(['middleware' => 'auth.basic'], function () {
             'as' => 'favorite.dashboard',
             'uses' => DashFavoriteController::class
         ]);
-//
-//        /* Eliminar categoría */
-//        Route::get('/{categoryID}/delete', [
-//            'as' => 'category.delete',
-//            'uses' => DeleteCategoryController::class
-//        ]);
+
+        /* Eliminar favorito */
+        Route::get('/{favoriteID}/delete', [
+            'as' => 'favorite.delete',
+            'uses' => DeleteFavoriteController::class
+        ]);
 //
 //        /* Formulario de editar categoría */
 //        Route::get('/{categoryID}/update', [
