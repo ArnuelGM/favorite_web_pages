@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('user.home') }}">Inicio</a>
-                    <a class="nav-link" href="#">Mis favoritos</a>
+                    <a class="nav-link" href="{{ route('favorite.dashboard') }}">Mis favoritos</a>
                     <a class="nav-link" href="{{ route('category.dashboard') }}">Categorías</a>
                 </div>
             </div>

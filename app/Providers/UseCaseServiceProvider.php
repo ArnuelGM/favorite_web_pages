@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\UseCases\Contracts\CreateCategoryUseCaseInterface;
+use App\UseCases\Contracts\CreateFavoriteUseCaseInterface;
 use App\UseCases\Contracts\CreateUserUseCaseInterface;
 use App\UseCases\Contracts\EditCategoryUseCaseInterface;
 use App\UseCases\Contracts\LoginUserUseCaseInterface;
 use App\UseCases\CreateCategoryUseCase;
+use App\UseCases\CreateFavoriteUseCase;
 use App\UseCases\CreateUserUseCase;
 use App\UseCases\EditCategoryUseCase;
 use App\UseCases\LoginUserUseCase;
@@ -26,6 +28,7 @@ class UseCaseServiceProvider extends ServiceProvider
         LoginUserUseCaseInterface::class => LoginUserUseCase::class,
         CreateCategoryUseCaseInterface::class => CreateCategoryUseCase::class,
         EditCategoryUseCaseInterface::class => EditCategoryUseCase::class,
+        CreateFavoriteUseCaseInterface::class => CreateFavoriteUseCase::class,
     ];
 
     /**

@@ -6,6 +6,9 @@ use App\Http\Controllers\Categories\DeleteCategoryController;
 use App\Http\Controllers\Categories\EditCategoryController;
 use App\Http\Controllers\Categories\FormCreateCategoryController;
 use App\Http\Controllers\Categories\FormEditCategoryController;
+use App\Http\Controllers\Favorites\CreateFavoriteController;
+use App\Http\Controllers\Favorites\DashFavoriteController;
+use App\Http\Controllers\Favorites\FormCreateFavoriteController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
 use App\Http\Controllers\User\FormLoginController;
@@ -112,5 +115,45 @@ Route::group(['middleware' => 'auth.basic'], function () {
         ]);
     });
 
+    /**
+     * favoritos
+     */
+    Route::group(['prefix' => 'favorites'], function () {
+        /* Formulario de creación de favoritos */
+        Route::get('/create', [
+            'as' => 'favorite.create.form',
+            'uses' => FormCreateFavoriteController::class
+        ]);
+
+        /* Creación de categoría */
+        Route::post('/create', [
+            'as' => 'favorite.create',
+            'uses' => CreateFavoriteController::class
+        ]);
+
+        /* Dashboard de favoritos */
+        Route::get('/dashboard', [
+            'as' => 'favorite.dashboard',
+            'uses' => DashFavoriteController::class
+        ]);
+//
+//        /* Eliminar categoría */
+//        Route::get('/{categoryID}/delete', [
+//            'as' => 'category.delete',
+//            'uses' => DeleteCategoryController::class
+//        ]);
+//
+//        /* Formulario de editar categoría */
+//        Route::get('/{categoryID}/update', [
+//            'as' => 'category.edit.form',
+//            'uses' => FormEditCategoryController::class
+//        ]);
+//
+//        /* Editar categoría */
+//        Route::post('/{categoryID}/update', [
+//            'as' => 'category.edit',
+//            'uses' => EditCategoryController::class
+//        ]);
+    });
 });
 

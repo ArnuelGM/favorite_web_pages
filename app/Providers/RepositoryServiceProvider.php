@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Repositories\Contracts\FavoriteRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepositoryEloquent;
+use App\Repositories\Eloquent\FavoriteRepositoryEloquent;
 use App\Repositories\Eloquent\UserRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +22,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public $bindings = [
         UserRepositoryInterface::class => UserRepositoryEloquent::class,
         CategoryRepositoryInterface::class => CategoryRepositoryEloquent::class,
+        FavoriteRepositoryInterface::class => FavoriteRepositoryEloquent::class,
     ];
 
     /**
