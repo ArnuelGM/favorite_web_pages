@@ -28,4 +28,10 @@ interface CategoryRepositoryInterface
      * @return Collection
      */
     public function getUserCategories(int $userID): Collection;
+
+    /**
+     * @param int $categoryID
+     * @return bool
+     */
+    public function delete(int $categoryID): bool;
 }

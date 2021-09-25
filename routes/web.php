@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Categories\CreateCategoryController;
 use App\Http\Controllers\Categories\DashCategoryController;
+use App\Http\Controllers\Categories\DeleteCategoryController;
 use App\Http\Controllers\Categories\FormCreateCategoryController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
@@ -88,6 +89,12 @@ Route::group(['middleware' => 'auth.basic'], function () {
         Route::get('/dashboard', [
             'as' => 'category.dashboard',
             'uses' => DashCategoryController::class
+        ]);
+
+        /* Eliminar categoría */
+        Route::get('/{categoryID}/delete', [
+            'as' => 'category.delete',
+            'uses' => DeleteCategoryController::class
         ]);
     });
 

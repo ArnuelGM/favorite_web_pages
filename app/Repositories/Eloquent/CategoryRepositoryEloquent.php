@@ -53,4 +53,14 @@ class CategoryRepositoryEloquent implements CategoryRepositoryInterface
     {
         return $this->category->where('user_id', '=', $userID)->get();
     }
+
+    /**
+     * @param int $categoryID
+     * @return bool
+     */
+    public function delete(int $categoryID): bool
+    {
+        $register = $this->category->findOrFail($categoryID);
+        return $register->delete();
+    }
 }
