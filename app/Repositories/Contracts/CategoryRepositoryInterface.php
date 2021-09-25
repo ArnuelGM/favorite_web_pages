@@ -34,4 +34,16 @@ interface CategoryRepositoryInterface
      * @return bool
      */
     public function delete(int $categoryID): bool;
+
+    /**
+     * @param int $categoryID
+     * @return Category|null
+     */
+    public function findByID(int $categoryID): ?Category;
+
+    /**
+     * @param Category $category
+     * @return Category
+     */
+    public function edit(Category $category): Category;
 }

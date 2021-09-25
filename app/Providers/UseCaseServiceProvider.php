@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\UseCases\Contracts\CreateCategoryUseCaseInterface;
 use App\UseCases\Contracts\CreateUserUseCaseInterface;
+use App\UseCases\Contracts\EditCategoryUseCaseInterface;
 use App\UseCases\Contracts\LoginUserUseCaseInterface;
 use App\UseCases\CreateCategoryUseCase;
 use App\UseCases\CreateUserUseCase;
+use App\UseCases\EditCategoryUseCase;
 use App\UseCases\LoginUserUseCase;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +25,7 @@ class UseCaseServiceProvider extends ServiceProvider
         CreateUserUseCaseInterface::class => CreateUserUseCase::class,
         LoginUserUseCaseInterface::class => LoginUserUseCase::class,
         CreateCategoryUseCaseInterface::class => CreateCategoryUseCase::class,
+        EditCategoryUseCaseInterface::class => EditCategoryUseCase::class,
     ];
 
     /**

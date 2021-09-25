@@ -63,4 +63,23 @@ class CategoryRepositoryEloquent implements CategoryRepositoryInterface
         $register = $this->category->findOrFail($categoryID);
         return $register->delete();
     }
+
+    /**
+     * @param int $categoryID
+     * @return Category|null
+     */
+    public function findByID(int $categoryID): ?Category
+    {
+        return $this->category->find($categoryID);
+    }
+
+    /**
+     * @param Category $category
+     * @return Category
+     */
+    public function edit(Category $category): Category
+    {
+        $category->save();
+        return $category;
+    }
 }

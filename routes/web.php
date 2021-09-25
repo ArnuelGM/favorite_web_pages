@@ -3,7 +3,9 @@
 use App\Http\Controllers\Categories\CreateCategoryController;
 use App\Http\Controllers\Categories\DashCategoryController;
 use App\Http\Controllers\Categories\DeleteCategoryController;
+use App\Http\Controllers\Categories\EditCategoryController;
 use App\Http\Controllers\Categories\FormCreateCategoryController;
+use App\Http\Controllers\Categories\FormEditCategoryController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
 use App\Http\Controllers\User\FormLoginController;
@@ -95,6 +97,18 @@ Route::group(['middleware' => 'auth.basic'], function () {
         Route::get('/{categoryID}/delete', [
             'as' => 'category.delete',
             'uses' => DeleteCategoryController::class
+        ]);
+
+        /* Formulario de editar categoría */
+        Route::get('/{categoryID}/update', [
+            'as' => 'category.edit.form',
+            'uses' => FormEditCategoryController::class
+        ]);
+
+        /* Editar categoría */
+        Route::post('/{categoryID}/update', [
+            'as' => 'category.edit',
+            'uses' => EditCategoryController::class
         ]);
     });
 

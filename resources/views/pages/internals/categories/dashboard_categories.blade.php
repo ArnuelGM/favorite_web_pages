@@ -25,7 +25,7 @@
                             <td>{{ $category->name }}</td>
                             <td>
                                 <div class="btn-group mb-3 float-end" role="group" aria-label="Basic example">
-                                    <a href="{{ route('category.create.form') }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{{ route('category.edit.form', ['categoryID' => $category->id]) }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
                                     <a href="{{ route('category.delete', ['categoryID' => $category->id]) }}" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></a>
                                 </div>
                             </td>
