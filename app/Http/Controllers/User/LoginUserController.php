@@ -51,4 +51,13 @@ class LoginUserController
              'msg' => $error
          ]);
      }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function logout(): RedirectResponse
+    {
+        auth()->logout();
+        return redirect()->route('login.form');
+    }
 }

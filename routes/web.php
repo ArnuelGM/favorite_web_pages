@@ -35,6 +35,12 @@ Route::group(['prefix' => 'register'], function () {
     ]);
 });
 
+/* Cerrar Sesión */
+Route::get('/logout', [
+    'as' => 'user.logout',
+    'uses' => LoginUserController::class . '@logout'
+]);
+
 Route::group(['prefix' => 'login'], function () {
     /* Formulario de ingreso */
     Route::get('/', [
