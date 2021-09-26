@@ -19,9 +19,10 @@ interface CategoryRepositoryInterface
 
     /**
      * @param string $name
+     * @param int $userID
      * @return Category|null
      */
-    public function findByName(string $name): ?Category;
+    public function findByNameAndUserID(string $name, int $userID): ?Category;
 
     /**
      * @param int $userID

@@ -39,7 +39,7 @@ class CreateCategoryUseCase implements CreateCategoryUseCaseInterface
         $category->name = $name;
         $category->user_id = $userID;
 
-        $existCategory = $this->categoryRepository->findByName($category->name);
+        $existCategory = $this->categoryRepository->findByNameAndUserID($category->name, $userID);
         if (!empty($existCategory)) {
             throw new CreateCategoryException('Esta categoría ya existe');
         }

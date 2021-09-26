@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $favorite_id
  * @property int $category_id
+ * @property string $created_at
  * @property Category $category
- * @property string created_at
  */
 class FavoriteCategory extends Model
 {
@@ -27,7 +27,7 @@ class FavoriteCategory extends Model
     /**
      * @return BelongsTo
      */
-    public function categories(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
     }

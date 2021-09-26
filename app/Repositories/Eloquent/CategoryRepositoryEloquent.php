@@ -38,11 +38,12 @@ class CategoryRepositoryEloquent implements CategoryRepositoryInterface
 
     /**
      * @param string $name
+     * @param int $userID
      * @return Category|null
      */
-    public function findByName(string $name): ?Category
+    public function findByNameAndUserID(string $name, int $userID): ?Category
     {
-        return $this->category->where('name', '=', $name)->first();
+        return $this->category->where('name', '=', $name)->where('user_id', '=', $userID)->first();
     }
 
     /**

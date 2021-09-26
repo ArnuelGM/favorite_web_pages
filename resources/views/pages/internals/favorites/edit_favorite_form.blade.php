@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3 form-control-sm">
                         <label for="description" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" value="{{$favorite->description}}" name="description" id="description">
+                        <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{$favorite->description}}</textarea>
                     </div>
                     <div class="mb-3 form-control-sm">
                         <p>Visibilidad</p>
@@ -37,24 +37,9 @@
                         </div>
                     </div>
                     <hr>
-                    <h6>Categorías</h6>
-                    <div>
-                        @foreach($categories as $category)
-                            <div class="form-check">
-                                <input
-                                    name="categories[]"
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    value="{{ $category->id }}"
-                                    id="category_check_{{ $category->id }}"
-                                    {{ $category->relatedWithFavorite($categoriesRelated) ? 'checked' : null }}
-                                >
-                                <label class="form-check-label" for="category_check_{{ $category->id }}">
-                                    {{ $category->name }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
+                    @component('components.category_section_for_favorite')
+                        @slot('categories', $categories)
+                    @endcomponent
                     <div style="text-align: center">
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
