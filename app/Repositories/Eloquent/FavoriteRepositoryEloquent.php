@@ -112,5 +112,13 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
         return $this->associateCategories($favorite, $categories);
     }
 
-
+    /**
+     * @inheritDoc
+     */
+    public function getPublicFavorites(): Collection
+    {
+        return $this->favorite->where('visibility', '=', Favorite::PUBLIC_VISIBILITY)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
 }

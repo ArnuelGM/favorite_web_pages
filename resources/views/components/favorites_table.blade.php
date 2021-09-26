@@ -39,7 +39,7 @@
         $(document).ready( function () {
             $('#favorites_table').DataTable({
                 "searching": false,
-                "ordering": false
+                "ordering": false,
             });
         } );
     </script>

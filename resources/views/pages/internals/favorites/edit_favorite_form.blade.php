@@ -39,6 +39,7 @@
                     <hr>
                     @component('components.category_section_for_favorite')
                         @slot('categories', $categories)
+                        @slot('categoriesRelated', $categoriesRelated)
                     @endcomponent
                     <div style="text-align: center">
                         <button type="submit" class="btn btn-primary">Actualizar</button>

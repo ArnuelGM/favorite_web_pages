@@ -40,7 +40,7 @@ class LoginUserController
                  $request->get('email'),
                  $request->get('password')
              );
-             return redirect()->route('user.home');
+             return redirect()->route('favorite.dashboard');
          } catch (LoginUserException $exception) {
              $error = $exception->getMessage();
          } catch (Exception $exception) {
@@ -58,6 +58,6 @@ class LoginUserController
     public function logout(): RedirectResponse
     {
         auth()->logout();
-        return redirect()->route('login.form');
+        return redirect()->route('home.public');
     }
 }

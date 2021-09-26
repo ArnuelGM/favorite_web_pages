@@ -17,6 +17,7 @@
                 type="checkbox"
                 value="{{ $category->id }}"
                 id="category_check_{{ $category->id }}"
+                {{ $category->relatedWithFavorite($categoriesRelated) ? 'checked' : null }}
             >
             <label class="form-check-label" for="category_check_{{ $category->id }}">
                 {{ $category->name }}

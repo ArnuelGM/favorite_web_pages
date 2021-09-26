@@ -25,6 +25,9 @@ class Favorite extends Model
 {
     use HasFactory;
 
+    /** @type int  */
+    public const PUBLIC_VISIBILITY = 1;
+
     /**
      * @return string
      */

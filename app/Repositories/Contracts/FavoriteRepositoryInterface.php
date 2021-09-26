@@ -60,4 +60,9 @@ interface FavoriteRepositoryInterface
      * @return Collection
      */
     public function updateCategories(Favorite $favorite, array $categories): Collection;
+
+    /**
+     * @return Collection
+     */
+    public function getPublicFavorites(): Collection;
 }

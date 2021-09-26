@@ -12,6 +12,7 @@ use App\Http\Controllers\Favorites\DeleteFavoriteController;
 use App\Http\Controllers\Favorites\EditFavoriteController;
 use App\Http\Controllers\Favorites\FormCreateFavoriteController;
 use App\Http\Controllers\Favorites\FormEditFavoriteController;
+use App\Http\Controllers\PublicHomeController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
 use App\Http\Controllers\User\FormLoginController;
@@ -29,6 +30,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Home */
+Route::get('/', [
+    'as' => 'home.public',
+    'uses' => PublicHomeController::class
+]);
 
 /*
  * Rutas para la gestión de usuario
@@ -70,7 +77,7 @@ Route::group(['prefix' => 'login'], function () {
 /**
  * sistema interno
  */
-Route::group(['middleware' => 'auth.basic'], function () {
+Route::group(['middleware' => 'auth'], function () {
     /* pagina de inicio de usuarios autenticados */
     Route::get('home/', [
         'as' => 'user.home',
