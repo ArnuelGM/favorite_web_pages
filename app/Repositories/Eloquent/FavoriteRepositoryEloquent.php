@@ -43,7 +43,9 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
      */
     public function getUserFavorites(int $userID): Collection
     {
-        return $this->favorite->where('user_id', '=', $userID)->get();
+        return $this->favorite->where('user_id', '=', $userID)
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     /**

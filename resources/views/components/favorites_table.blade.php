@@ -38,7 +38,8 @@
     <script>
         $(document).ready( function () {
             $('#favorites_table').DataTable({
-                "searching": false
+                "searching": false,
+                "ordering": false
             });
         } );
     </script>
