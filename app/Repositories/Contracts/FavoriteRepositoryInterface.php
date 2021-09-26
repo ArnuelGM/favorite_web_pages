@@ -52,5 +52,12 @@ interface FavoriteRepositoryInterface
      * @param array $categories
      * @return Collection
      */
+    public function associateCategories(Favorite $favorite, array $categories): Collection;
+
+    /**
+     * @param Favorite $favorite
+     * @param array $categories
+     * @return Collection
+     */
     public function updateCategories(Favorite $favorite, array $categories): Collection;
 }

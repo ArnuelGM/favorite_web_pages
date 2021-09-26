@@ -51,8 +51,9 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
      */
     public function delete(int $favoriteID): bool
     {
-        $register = $this->favorite->findOrFail($favoriteID);
-        return $register->delete();
+        $favorite = $this->favorite->findOrFail($favoriteID);
+        $favorite->categoriesRelated()->delete();
+        return $favorite->delete();
     }
 
     /**
@@ -85,10 +86,9 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function updateCategories(Favorite $favorite, array $categories): Collection
+    public function associateCategories(Favorite $favorite, array $categories): Collection
     {
         $records = collect();
-        $favorite->categoriesRelated()->delete();
         foreach ($categories as $categoryID) {
             $newRelation = new FavoriteCategory();
             $newRelation->category_id = $categoryID;
@@ -100,4 +100,15 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
 
         return $records;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function updateCategories(Favorite $favorite, array $categories): Collection
+    {
+        $favorite->categoriesRelated()->delete();
+        return $this->associateCategories($favorite, $categories);
+    }
+
+
 }

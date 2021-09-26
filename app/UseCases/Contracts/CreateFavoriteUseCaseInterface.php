@@ -16,8 +16,17 @@ interface CreateFavoriteUseCaseInterface
      * @param string $url
      * @param string $description
      * @param bool $visibility
+     * @param int $userID
+     * @param array $categories
      * @return Favorite
      * @throws CreateFavoriteException
      */
-    public function handle(string $title, string $url, string $description, bool $visibility, int $userID): Favorite;
+    public function handle(
+        string $title,
+        string $url,
+        string $description,
+        bool $visibility,
+        int $userID,
+        array $categories
+    ): Favorite;
 }

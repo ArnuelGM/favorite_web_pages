@@ -27,15 +27,16 @@ class CreateFavoriteUseCase implements CreateFavoriteUseCaseInterface
     }
 
     /**
-     * @param string $title
-     * @param string $url
-     * @param string $description
-     * @param bool $visibility
-     * @param int $userID
-     * @return Favorite
+     * @inheritDoc
      */
-    public function handle(string $title, string $url, string $description, bool $visibility, int $userID): Favorite
-    {
+    public function handle(
+        string $title,
+        string $url,
+        string $description,
+        bool $visibility,
+        int $userID,
+        array $categories
+    ): Favorite {
         $favorite = new Favorite();
         $favorite->title = $title;
         $favorite->url = $url;
@@ -43,6 +44,13 @@ class CreateFavoriteUseCase implements CreateFavoriteUseCaseInterface
         $favorite->visibility = $visibility;
         $favorite->user_id = $userID;
 
+        $favorite = $this->favoriteRepository->create($favorite);
+        $this->associateCategories($favorite, $categories);
         return $this->favoriteRepository->create($favorite);
+    }
+
+    private function associateCategories(Favorite $favorite, array $categories): void
+    {
+        $this->favoriteRepository->associateCategories($favorite, $categories);
     }
 }
