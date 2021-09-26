@@ -9,7 +9,9 @@ use App\Http\Controllers\Categories\FormEditCategoryController;
 use App\Http\Controllers\Favorites\CreateFavoriteController;
 use App\Http\Controllers\Favorites\DashFavoriteController;
 use App\Http\Controllers\Favorites\DeleteFavoriteController;
+use App\Http\Controllers\Favorites\EditFavoriteController;
 use App\Http\Controllers\Favorites\FormCreateFavoriteController;
+use App\Http\Controllers\Favorites\FormEditFavoriteController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\FormCreateUserController;
 use App\Http\Controllers\User\FormLoginController;
@@ -143,18 +145,18 @@ Route::group(['middleware' => 'auth.basic'], function () {
             'as' => 'favorite.delete',
             'uses' => DeleteFavoriteController::class
         ]);
-//
-//        /* Formulario de editar categoría */
-//        Route::get('/{categoryID}/update', [
-//            'as' => 'category.edit.form',
-//            'uses' => FormEditCategoryController::class
-//        ]);
-//
-//        /* Editar categoría */
-//        Route::post('/{categoryID}/update', [
-//            'as' => 'category.edit',
-//            'uses' => EditCategoryController::class
-//        ]);
+
+        /* Formulario de editar favorito */
+        Route::get('/{favoriteID}/update', [
+            'as' => 'favorite.edit.form',
+            'uses' => FormEditFavoriteController::class
+        ]);
+
+        /* Editar favorito */
+        Route::post('/{favoriteID}/update', [
+            'as' => 'favorite.edit',
+            'uses' => EditFavoriteController::class
+        ]);
     });
 });
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Favorites;
 
-use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Contracts\FavoriteRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;

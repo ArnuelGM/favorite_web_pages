@@ -7,10 +7,10 @@ use App\Repositories\Contracts\FavoriteRepositoryInterface;
 use Illuminate\Contracts\View\View;
 
 /**
- * Class DashFavoriteController
- * @package App\Http\Controllers\Favorites
+ * Class FormEditFavoriteController
+ * @package App\Http\Controllers\Categories
  */
-class DashFavoriteController
+class FormEditFavoriteController
 {
     /**
      * @var FavoriteRepositoryInterface
@@ -18,7 +18,7 @@ class DashFavoriteController
     private $favoriteRepository;
 
     /**
-     * DashFavoriteController constructor.
+     * FormEditFavoriteController constructor.
      * @param FavoriteRepositoryInterface $favoriteRepository
      */
     public function __construct(FavoriteRepositoryInterface $favoriteRepository)
@@ -27,13 +27,13 @@ class DashFavoriteController
     }
 
     /**
+     * @param int $favoriteID
      * @return View
      */
-    public function __invoke(): View
+    public function __invoke(int $favoriteID): View
     {
-        $favorites = $this->favoriteRepository->getUserFavorites(auth()->user()->id);
-        $data = compact('favorites');
-        return view('pages.internals.favorites.dashboard_favorites', $data);
+        $favorite = $this->favoriteRepository->findByID($favoriteID);
+        $data = compact('favorite');
+        return view('pages.internals.favorites.edit_favorite_form', $data);
     }
-
 }

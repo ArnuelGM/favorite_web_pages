@@ -29,7 +29,7 @@
                             <td>{{ $favorite->visibilityLabel }}</td>
                             <td>
                                 <div class="btn-group mb-3 float-end" role="group" aria-label="Basic example">
-                                    <a href="{{ route('category.edit.form', ['categoryID' => $favorite->id]) }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{{ route('favorite.edit.form', ['favoriteID' => $favorite->id]) }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
                                     <a href="{{ route('favorite.delete', ['favoriteID' => $favorite->id]) }}" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></a>
                                 </div>
                             </td>

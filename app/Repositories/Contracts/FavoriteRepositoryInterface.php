@@ -28,4 +28,17 @@ interface FavoriteRepositoryInterface
      * @return bool
      */
     public function delete(int $favoriteID): bool;
+
+    /**
+     * @param Favorite $favorite
+     * @return Favorite
+     */
+    public function edit(Favorite $favorite): Favorite;
+
+    /**
+     * @param int $favoriteID
+     * @return Favorite|null
+     */
+    public function findByID(int $favoriteID): ?Favorite;
+
 }

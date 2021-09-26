@@ -2,8 +2,7 @@
 
 namespace App\UseCases\Contracts;
 
-use App\Exceptions\CreateCategoryException;
-use App\Exceptions\EditCategoryException;
+use App\Exceptions\EditFavoriteException;
 use App\Models\Category;
 
 /**
@@ -17,7 +16,7 @@ interface EditCategoryUseCaseInterface
      * @param string $name
      * @param string $userID
      * @return Category
-     * @throws EditCategoryException
+     * @throws EditFavoriteException
      */
     public function handle(int $categoryID, string $name, string $userID): Category;
 }

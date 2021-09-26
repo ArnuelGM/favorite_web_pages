@@ -2,7 +2,6 @@
 
 namespace App\UseCases;
 
-use App\Exceptions\CreateCategoryException;
 use App\Exceptions\EditCategoryException;
 use App\Models\Category;
 use App\Repositories\Contracts\CategoryRepositoryInterface;

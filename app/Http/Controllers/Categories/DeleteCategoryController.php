@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Categories;
 
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Exception;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 /**

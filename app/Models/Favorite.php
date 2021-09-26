@@ -28,4 +28,20 @@ class Favorite extends Model
     {
         return (bool)$this->visibility ? 'Publico' : 'Privado';
     }
+
+    /**
+     * @return bool
+     */
+    public function isPublic(): bool
+    {
+        return $this->visibility == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrivate(): bool
+    {
+        return $this->visibility == 0;
+    }
 }

@@ -53,4 +53,23 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
         $register = $this->favorite->findOrFail($favoriteID);
         return $register->delete();
     }
+
+    /**
+     * @param Favorite $favorite
+     * @return Favorite
+     */
+    public function edit(Favorite $favorite): Favorite
+    {
+        $favorite->save();
+        return $favorite;
+    }
+
+    /**
+     * @param int $favoriteID
+     * @return Favorite|null
+     */
+    public function findByID(int $favoriteID): ?Favorite
+    {
+        return $this->favorite->find($favoriteID);
+    }
 }

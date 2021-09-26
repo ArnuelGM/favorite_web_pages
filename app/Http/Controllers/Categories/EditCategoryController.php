@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Categories;
 
-use App\Exceptions\CreateCategoryException;
 use App\Exceptions\EditCategoryException;
 use App\Http\Requests\CreateCategoryFormRequest;
-use App\UseCases\Contracts\CreateCategoryUseCaseInterface;
 use App\UseCases\Contracts\EditCategoryUseCaseInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
