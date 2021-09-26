@@ -36,6 +36,25 @@
                             </label>
                         </div>
                     </div>
+                    <hr>
+                    <h6>Categorías</h6>
+                    <div>
+                        @foreach($categories as $category)
+                            <div class="form-check">
+                                <input
+                                    name="categories[]"
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="{{ $category->id }}"
+                                    id="category_check_{{ $category->id }}"
+                                    {{ $category->relatedWithFavorite($categoriesRelated) ? 'checked' : null }}
+                                >
+                                <label class="form-check-label" for="category_check_{{ $category->id }}">
+                                    {{ $category->name }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
                     <div style="text-align: center">
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>

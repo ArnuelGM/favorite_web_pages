@@ -31,7 +31,8 @@ class CreateFavoriteFormRequest extends FormRequest
             'title' => 'required|max:100',
             'url' => 'required|url|max:200',
             'description' => 'required',
-            'visibility' => 'required|boolean'
+            'visibility' => 'required|boolean',
+            'categories' => 'required'
         ];
     }
 
@@ -44,7 +45,8 @@ class CreateFavoriteFormRequest extends FormRequest
             'url.url' => 'El formato de la url no es valido',
             'url.max' => 'La url no debe exceder los 200 caracteres',
             'description.required' => 'La descripción es obligatoria',
-            'visibility.required' => 'La selección de visibilidad es obligatoria'
+            'visibility.required' => 'La selección de visibilidad es obligatoria',
+            'categories.required' => 'Debe seleccionar por lo menos una categoría'
         ];
     }
 }

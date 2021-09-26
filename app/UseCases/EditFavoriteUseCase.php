@@ -6,6 +6,7 @@ use App\Exceptions\EditFavoriteException;
 use App\Models\Favorite;
 use App\Repositories\Contracts\FavoriteRepositoryInterface;
 use App\UseCases\Contracts\EditFavoriteUseCaseInterface;
+use Illuminate\Support\Collection;
 
 /**
  * Class EditFavoriteUseCase
@@ -30,8 +31,15 @@ class EditFavoriteUseCase implements EditFavoriteUseCaseInterface
     /**
      * @inheritDoc
      */
-    public function handle(int $favoriteID, string $title, string $url, string $description, bool $visibility, string $userID): Favorite
-    {
+    public function handle(
+        int $favoriteID,
+        string $title,
+        string $url,
+        string $description,
+        bool $visibility,
+        string $userID,
+        array $categories
+    ): Favorite {
         $favorite = $this->favoriteRepository->findByID($favoriteID);
         if (empty($favorite)) {
             throw new EditFavoriteException('Favorito no encontrado!');
@@ -49,6 +57,17 @@ class EditFavoriteUseCase implements EditFavoriteUseCaseInterface
         $favorite->url = $url;
         $favorite->description = $description;
         $favorite->visibility = $visibility;
+
+        $this->updateCategories($favorite, $categories);
         return $this->favoriteRepository->edit($favorite);
+    }
+
+    /**
+     * @param Favorite $favorite
+     * @param array $categories
+     */
+    private function updateCategories(Favorite $favorite, array $categories): void
+    {
+        $this->favoriteRepository->updateCategories($favorite, $categories);
     }
 }

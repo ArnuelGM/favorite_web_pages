@@ -47,7 +47,8 @@ class EditFavoriteController
                 $request->get('url'),
                 $request->get('description'),
                 $request->get('visibility'),
-                auth()->user()->id
+                auth()->user()->id,
+                $request->get('categories')
             );
 
             session()->flash('success', 'Favorito editado con éxito');
@@ -55,6 +56,7 @@ class EditFavoriteController
         } catch (EditFavoriteException $exception) {
             $error = $exception->getMessage();
         } catch (Exception $exception) {
+            dd($exception);
             $error = 'Error al editar el favorito!';
         }
 

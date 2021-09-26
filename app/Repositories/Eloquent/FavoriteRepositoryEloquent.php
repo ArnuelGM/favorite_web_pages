@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Favorite;
+use App\Models\FavoriteCategory;
 use App\Repositories\Contracts\FavoriteRepositoryInterface;
 use Illuminate\Support\Collection;
 
@@ -71,5 +72,32 @@ class FavoriteRepositoryEloquent implements FavoriteRepositoryInterface
     public function findByID(int $favoriteID): ?Favorite
     {
         return $this->favorite->find($favoriteID);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCategoriesByFavoriteID(Favorite $favorite): Collection
+    {
+        return $favorite->categoriesRelated;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function updateCategories(Favorite $favorite, array $categories): Collection
+    {
+        $records = collect();
+        $favorite->categoriesRelated()->delete();
+        foreach ($categories as $categoryID) {
+            $newRelation = new FavoriteCategory();
+            $newRelation->category_id = $categoryID;
+            $newRelation->favorite_id = $favorite->id;
+            $newRelation->created_at = date('Y-m-d H:i:s');
+            $newRelation->save();
+            $records->push($newRelation);
+        }
+
+        return $records;
     }
 }

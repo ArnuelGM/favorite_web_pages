@@ -41,4 +41,16 @@ interface FavoriteRepositoryInterface
      */
     public function findByID(int $favoriteID): ?Favorite;
 
+    /**
+     * @param Favorite $favorite
+     * @return Collection
+     */
+    public function getCategoriesByFavoriteID(Favorite $favorite): Collection;
+
+    /**
+     * @param Favorite $favorite
+     * @param array $categories
+     * @return Collection
+     */
+    public function updateCategories(Favorite $favorite, array $categories): Collection;
 }

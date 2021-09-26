@@ -18,9 +18,18 @@ interface EditFavoriteUseCaseInterface
      * @param string $description
      * @param bool $visibility
      * @param string $userID
+     * @param array $categories
      * @return Favorite
      *
      * @throws EditFavoriteException
      */
-    public function handle(int $favoriteID, string $title, string $url, string $description, bool $visibility, string $userID): Favorite;
+    public function handle(
+        int $favoriteID,
+        string $title,
+        string $url,
+        string $description,
+        bool $visibility,
+        string $userID,
+        array $categories
+    ): Favorite;
 }

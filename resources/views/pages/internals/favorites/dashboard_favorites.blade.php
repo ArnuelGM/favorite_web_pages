@@ -15,7 +15,6 @@
                     <tr>
                         <th>Titulo</th>
                         <th>Url</th>
-                        <th>Descripción</th>
                         <th>Visibilidad</th>
                         <th>Acciones</th>
                     </tr>
@@ -25,7 +24,6 @@
                         <tr>
                             <td>{{ $favorite->title }}</td>
                             <td>{{ $favorite->url }}</td>
-                            <td>{{ $favorite->description }}</td>
                             <td>{{ $favorite->visibilityLabel }}</td>
                             <td>
                                 <div class="btn-group mb-3 float-end" role="group" aria-label="Basic example">
